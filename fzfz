@@ -65,7 +65,7 @@ else
     EXTRA_DIRS="{ true }"
 fi
 
-if (($FZFZ_SUBDIR_LIMIT == 0)); then
+if [ $FZFZ_SUBDIR_LIMIT -eq 0 ] || [ ! -d .git ]; then
     SUBDIRS="{ true }"
 else
     SUBDIRS="{ $FIND_PREFIX '$PWD' $FIND_POSTFIX | $EXCLUDER | head -n $(($FZFZ_SUBDIR_LIMIT+1)) | $FIND_REMOVE_SURPLUS }"
